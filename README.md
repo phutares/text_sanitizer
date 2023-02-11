@@ -22,6 +22,9 @@ Follows to the Calculator class to create frequency of alphabet by collection li
 ### Print & Keep output
 Just print to the terminal and keep the result of terminal result to the text file for text output handling.
 
+## SQL
+Go to SQL folder to use that command
+
 ## Stunning
 Have more steps to ... blah blah. I'm so curious in this requirement. HOW? just logical?
 
