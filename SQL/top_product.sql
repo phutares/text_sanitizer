@@ -16,10 +16,19 @@ product_class AS (
 )
 
 SELECT 
+product_class_name
+,RANK() over (partition by product_class_name ORDER by sales_value DESC) as ranking
+,product_name
+,sales_value
+FROM (
+SELECT 
 pc.product_class_name
-,RANK() over (partition by pc.product_class_name ORDER by tc.quantity * p.retail_price DESC) as ranking
 ,p.product_name
-,tc.quantity * p.retail_price AS sales_value
+,SUM(tc.quantity * p.retail_price) AS sales_value
 FROM transaction_table tc 
 LEFT JOIN product p ON tc.product_id = p.product_id
 LEFT JOIN product_class pc ON p.product_class_id = pc.product_class_id
+GROUP BY 
+pc.product_class_name
+,p.product_name
+)
